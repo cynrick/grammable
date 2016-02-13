@@ -15,11 +15,7 @@ RSpec.describe GramsController, type: :controller do
     end
 
     it "should successfully show the new form" do
-      user = User.create(
-        email: 'test@outlook.com',
-        password: 'password',
-        password_confirmation: 'password'
-      )
+      user = FactoryGirl.create(:user)
       sign_in user
 
       get :new
@@ -34,11 +30,7 @@ RSpec.describe GramsController, type: :controller do
     end
 
     it "should successfully create a new gram in the database" do
-      user = User.create(
-        email: 'test@outlook.com',
-        password: 'password',
-        password_confirmation: 'password'
-      )
+      user = FactoryGirl.create(:user)
       sign_in user
 
       post :create, gram: { message: 'Hello!' }
@@ -50,11 +42,7 @@ RSpec.describe GramsController, type: :controller do
     end
 
     it "should properly deal with empty message field" do
-      user = User.create(
-        email: 'test@outlook.com',
-        password: 'password',
-        password_confirmation: 'password'
-      )
+      user = FactoryGirl.create(:user)
       sign_in user
 
       post :create, gram: { message: '' }
@@ -63,11 +51,7 @@ RSpec.describe GramsController, type: :controller do
     end
 
     it "should properly deal with message field with input less than 3 characters long" do
-      user = User.create(
-        email: 'test@outlook.com',
-        password: 'password',
-        password_confirmation: 'password'
-      )
+      user = FactoryGirl.create(:user)
       sign_in user
 
       post :create, gram: { message: 'Hi' }
