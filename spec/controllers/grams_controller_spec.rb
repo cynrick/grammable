@@ -59,4 +59,17 @@ RSpec.describe GramsController, type: :controller do
       expect(Gram.count).to eq(0)
     end
   end
+
+  describe "grams#show action" do
+    it "should successfully show the page if the gram is found" do
+      gram = FactoryGirl.create(:gram)
+      get :show, id: gram.id
+      expect(response).to have_http_status(:success)
+    end
+
+    it "should return a 404 error if the gram is not found" do
+      get :show, id: 'integer'
+      expect(response).to have_http_status(:not_found)
+    end
+  end
 end
