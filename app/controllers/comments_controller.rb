@@ -15,8 +15,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:message)
   end
-
-  def render_error(status)
-    render text: "#{status.to_s.titleize}", status: status
-  end
 end
