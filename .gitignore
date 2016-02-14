@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore picture.png files created during Rspec tests.
+/public/uploads/gram/picture/*
