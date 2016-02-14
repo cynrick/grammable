@@ -74,6 +74,12 @@ RSpec.describe GramsController, type: :controller do
   end
 
   describe "grams#edit action" do
+    it "should not allow unauthenticated users to edit grams" do
+      gram = FactoryGirl.create(:gram)
+      get :edit, id: gram.id
+      expect(response).to redirect_to new_user_session_path
+    end
+
     it "should successfully show the edit form if the gram is found" do
       gram = FactoryGirl.create(:gram)
       get :edit, id: gram.id
@@ -87,6 +93,12 @@ RSpec.describe GramsController, type: :controller do
   end
 
   describe "grams#update action" do
+    it "should not allow unauthenticated users to update grams" do
+      gram = FactoryGirl.create(:gram)
+      patch :update, id: gram.id, gram: { message: 'Changed' }
+      expect(response).to redirect_to new_user_session_path
+    end
+
     it "should allow users to successfully update grams" do
       gram = FactoryGirl.create(:gram, message: 'Initial Value')
       patch :update, id: gram.id, gram: { message: 'Changed' }
@@ -110,6 +122,12 @@ RSpec.describe GramsController, type: :controller do
   end
 
   describe "grams#destroy action" do
+    it "should not allow unauthenticated users to destroy grams" do
+      gram = FactoryGirl.create(:gram)
+      delete :destroy, id: gram.id
+      expect(response).to redirect_to new_user_session_path
+    end
+
     it "should allow users to destroy grams" do
       gram = FactoryGirl.create(:gram)
       delete :destroy, id: gram.id
