@@ -109,6 +109,15 @@ RSpec.describe GramsController, type: :controller do
   end
 
   describe "grams#update action" do
+    it "should not let users who did not create the gram update the gram" do
+      gram = FactoryGirl.create(:gram)
+      user = FactoryGirl.create(:user)
+      sign_in user
+
+      patch :update, id: gram.id, gram: { message: 'Changed' }
+      expect(response).to have_http_status(:forbidden)
+    end
+
     it "should not allow unauthenticated users to update grams" do
       gram = FactoryGirl.create(:gram)
 
