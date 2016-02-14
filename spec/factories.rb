@@ -9,6 +9,7 @@ FactoryGirl.define do
 
   factory :gram do
     message "Hello"
+    picture "someURL"
     association :user
   end
 end
