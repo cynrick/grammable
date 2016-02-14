@@ -1,7 +1,4 @@
-FactoryGirl.define do  factory :comment do
-    
-  end
-
+FactoryGirl.define do
   factory :user do
     sequence :email do |n|
       "dummyEmail#{n}@gmail.com"
@@ -15,5 +12,12 @@ FactoryGirl.define do  factory :comment do
     picture { fixture_file_upload(Rails.root.join('spec', 'fixtures', 'picture.png'), 'image/png') }
 
     association :user
+  end
+
+  factory :comment do
+    message "Comment"
+
+    association :user
+    association :gram
   end
 end
