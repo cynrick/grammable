@@ -1,1 +1,1 @@
-#### A web app similar to Instagram built with TDD approach.
+#### A web app similar to Instagram.
