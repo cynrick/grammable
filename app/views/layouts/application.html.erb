@@ -19,7 +19,7 @@
     <div class="add pull-right">
       <% if current_user %>
         Welcome, <%= current_user.email %>.
-        <%= link_to 'New post', new_gram_path %>
+        <%= link_to 'New gram', new_gram_path %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', new_user_session_path %>
@@ -31,10 +31,10 @@
 </div>
 
 <% if notice.present? %>
-  <p class="alert alert-info"><%= notice %></p>
+  <p class="alert alert-info text-center"><%= notice %></p>
 <% end %>
 <% if alert.present? %>
-  <p class="alert alert-danger"><%= alert %></p>
+  <p class="alert alert-danger text-center"><%= alert %></p>
 <% end %>
 
 <%= yield %>
