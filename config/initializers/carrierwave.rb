@@ -5,7 +5,7 @@ CarrierWave.configure do |config|
     config.storage = :file
   end
   
-  if Rails.env.production?
+  if Rails.env.development? || Rails.env.production?
     config.storage = :fog
 
     config.fog_credentials = {
